@@ -26,7 +26,6 @@ public class MedicoController {
         repository.save(new Medico(dados));
     }
     @GetMapping
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Page<DadosListagemMedico> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
         return repository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
     }
